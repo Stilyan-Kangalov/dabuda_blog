@@ -49,6 +49,23 @@ IF "%option%"=="1" (
 	pause >nul
 ) ELSE IF "%option%"=="3" (
 	call cd ..
+	echo ### The direcotry has been changed with one level backwords.
+	echo ### Now press any key to trigger the Jekyll Rebuild process.
+    timeout /t -1
+	echo ### ... ... ...
+	echo bundle exec jekyll build
+	echo.
+	echo ### Finished with all updates. Moving back to your current directory.
+	call cd _site
+	echo.
+	echo ### List of all updated files:
+	call git status
+	echo ### ... ... ...
+	echo. 
+	echo ### Now we will trigger auto commit in GitHub.
+	call git add .
+	call git commit -a -m "Automated commit by Speedy_Git on %currentTime%"
+	call git push origin master
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
