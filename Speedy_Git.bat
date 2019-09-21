@@ -11,8 +11,6 @@ set currentTime=%mydate%%mytime%
 REM set timeOut time
 set timeOutNum=15
 REM show Git status
-call git status
-echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 echo.
 echo ### Choose to Push or Get ###
@@ -32,6 +30,7 @@ echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 IF "%option%"=="1" (
 	REM add all new files with auto-commit
+	call cd _site
 	call git add .
 	call git commit -a -m "Automated commit by Speedy_Git on %currentTime%"
 	call git push origin master
@@ -42,6 +41,7 @@ IF "%option%"=="1" (
 	exit
 ) ELSE IF "%option%"=="2" (
 	REM make new commit with your custom message
+	call cd _site
 	set /p "msgline=### Type message for your new commit:"
 	call git add .
 	call git commit -m "%msgline%"
@@ -52,14 +52,9 @@ IF "%option%"=="1" (
 	timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="3" (
-	call cd ..
-	echo ### The direcotry has been changed with one level backwards.
-	echo ### Wait a bit or press any key to trigger the Jekyll Rebuild process.
-    timeout /t 5
-	echo.
 	call bundle exec jekyll build
 	echo.
-	echo ### Finished with all updates. Moving back to your current directory.
+	echo ### Finished with all updates.
 	echo.
 	call cd _site
 	call git add .
@@ -74,6 +69,7 @@ IF "%option%"=="1" (
 	timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="4" (
+    call cd _site
 	call git pull origin master
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
@@ -81,6 +77,7 @@ IF "%option%"=="1" (
 	timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="5" (
+    call cd _site
 	echo ### Processing your request.
     call git fetch upstream
     echo ### All updates are in your upstream branch. Now, press any key to trigger the merge!
@@ -98,6 +95,7 @@ IF "%option%"=="1" (
 	timeout /t 15
 	exit
 ) ELSE IF "%option%"=="7" (
+	call cd _site
 	call git remote -v
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
@@ -105,6 +103,7 @@ IF "%option%"=="1" (
     timeout /t 30
 	exit
 ) ELSE IF "%option%"=="8" (
+    call cd _site
 	set /p "url=### Paste the URL from the original(forked) repo and press Enter:"
     call git remote add upstream %url%
 	timeout /t 10
