@@ -35,7 +35,8 @@ IF "%option%"=="1" (
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	pause >nul
+	timeout /t 15
+	exit
 ) ELSE IF "%option%"=="2" (
 	REM make new commit with your custom message
 	set /p "msgline=### Type message for your new commit:"
@@ -45,12 +46,13 @@ IF "%option%"=="1" (
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	pause >nul
+	timeout /t 15
+	exit
 ) ELSE IF "%option%"=="3" (
 	call cd ..
 	echo ### The direcotry has been changed with one level backwords.
 	echo ### Wait a bit or press any key to trigger the Jekyll Rebuild process.
-    timeout /t 4
+    timeout /t 5
 	echo.
 	call bundle exec jekyll build
 	echo.
@@ -66,13 +68,15 @@ IF "%option%"=="1" (
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	pause >nul
+	timeout /t 15
+	exit
 ) ELSE IF "%option%"=="4" (
 	call git pull origin master
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	pause >nul
+	timeout /t 15
+	exit
 ) ELSE IF "%option%"=="5" (
 	echo ### Processing your request.
     call git fetch upstream
@@ -81,26 +85,30 @@ IF "%option%"=="1" (
     call git merge upstream/master
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	pause >nul
+	timeout /t 15
+	exit
 ) ELSE IF "%option%"=="6" (
 	start https://github.com/notifications
 	echo ### Processing your request.
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	pause >nul
+	timeout /t 15
+	exit
 ) ELSE IF "%option%"=="7" (
 	call git remote -v
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-    pause >nul
+    timeout /t 15
+	exit
 ) ELSE IF "%option%"=="8" (
 	set /p "url=### Paste the URL from the original(forked) repo and press Enter:"
     call git remote add upstream %url%
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-    pause >nul
+    timeout /t 15
+	exit
 ) ELSE IF "%option%"=="9" (
 	exit
 ) ELSE (
