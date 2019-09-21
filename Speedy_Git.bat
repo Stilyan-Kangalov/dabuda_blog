@@ -49,8 +49,8 @@ IF "%option%"=="1" (
 ) ELSE IF "%option%"=="3" (
 	call cd ..
 	echo ### The direcotry has been changed with one level backwords.
-	echo ### Now press any key to trigger the Jekyll Rebuild process.
-    timeout /t -1
+	echo ### Wait a bit or press any key to trigger the Jekyll Rebuild process.
+    timeout /t 4
 	echo.
 	call bundle exec jekyll build
 	echo.
