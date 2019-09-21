@@ -18,12 +18,13 @@ echo ### Choose to Push or Get ###
 echo   Available commands are:
 echo    1. Push with automated commit.
 echo    2. Push with custom message.
-echo    3. Pull new updates.
-echo    4. Pull and Merge updates from a forked repo.
-echo    5. Check your notifications at Github.
-echo    6. Show me all remotes...
-echo    7. Add an upstream remote from a forked repo.
-echo    8. Exit.
+echo    3. Rebuild with Jekyll and Push with auto commit.
+echo    4. Pull new updates.
+echo    5. Pull and Merge updates from a forked repo.
+echo    6. Check your notifications at Github.
+echo    7. Show me all remotes...
+echo    8. Add an upstream remote from a forked repo.
+echo    9. Exit.
 set /p "option=### Make your choice:"
 echo.
 echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
@@ -47,12 +48,18 @@ IF "%option%"=="1" (
 	echo ### Great, everything went well! Press any key for exit.
 	pause >nul
 ) ELSE IF "%option%"=="3" (
-	call git pull origin master
+	call cd ..
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
 	pause >nul
 ) ELSE IF "%option%"=="4" (
+	call git pull origin master
+	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+	echo.
+	echo ### Great, everything went well! Press any key for exit.
+	pause >nul
+) ELSE IF "%option%"=="5" (
 	echo ### Processing your request.
     call git fetch upstream
     echo ### All updates are in your upstream branch. Now, press any key to trigger the merge!
@@ -61,26 +68,26 @@ IF "%option%"=="1" (
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
 	pause >nul
-) ELSE IF "%option%"=="5" (
+) ELSE IF "%option%"=="6" (
 	start https://github.com/notifications
 	echo ### Processing your request.
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
 	pause >nul
-) ELSE IF "%option%"=="6" (
+) ELSE IF "%option%"=="7" (
 	call git remote -v
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
     pause >nul
-) ELSE IF "%option%"=="7" (
+) ELSE IF "%option%"=="8" (
 	set /p "url=### Paste the URL from the original(forked) repo and press Enter:"
     call git remote add upstream %url%
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
     pause >nul
-) ELSE IF "%option%"=="8" (
+) ELSE IF "%option%"=="9" (
 	exit
 ) ELSE (
     exit
