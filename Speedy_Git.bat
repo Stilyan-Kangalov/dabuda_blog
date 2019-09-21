@@ -53,7 +53,7 @@ IF "%option%"=="1" (
 	exit
 ) ELSE IF "%option%"=="3" (
 	call cd ..
-	echo ### The direcotry has been changed with one level backwords.
+	echo ### The direcotry has been changed with one level backwards.
 	echo ### Wait a bit or press any key to trigger the Jekyll Rebuild process.
     timeout /t 5
 	echo.
@@ -65,7 +65,7 @@ IF "%option%"=="1" (
 	call git add .
 	call git commit -a -m "Automated commit by Speedy_Git on %currentTime%"
 	echo. 
-	echo ### Now we will trigger auto commit in GitHub.
+	echo ### Now we will make auto commit in GitHub.
 	echo.
 	call git push origin master
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
