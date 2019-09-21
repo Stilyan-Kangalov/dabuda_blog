@@ -8,6 +8,9 @@ REM get date and time
 for /f "delims=" %%a in ('date/t') do @set mydate=%%a
 for /f "delims=" %%a in ('time/t') do @set mytime=%%a
 set currentTime=%mydate%%mytime%
+REM set timeOut time
+set timeOutNum=15
+REM show Git status
 call git status
 echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
@@ -35,7 +38,7 @@ IF "%option%"=="1" (
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	timeout /t 15
+	timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="2" (
 	REM make new commit with your custom message
@@ -46,7 +49,7 @@ IF "%option%"=="1" (
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	timeout /t 15
+	timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="3" (
 	call cd ..
@@ -68,14 +71,14 @@ IF "%option%"=="1" (
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	timeout /t 15
+	timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="4" (
 	call git pull origin master
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	timeout /t 15
+	timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="5" (
 	echo ### Processing your request.
@@ -85,7 +88,7 @@ IF "%option%"=="1" (
     call git merge upstream/master
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-	timeout /t 15
+	timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="6" (
 	start https://github.com/notifications
@@ -99,7 +102,7 @@ IF "%option%"=="1" (
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-    timeout /t 15
+    timeout /t 30
 	exit
 ) ELSE IF "%option%"=="8" (
 	set /p "url=### Paste the URL from the original(forked) repo and press Enter:"
@@ -107,7 +110,7 @@ IF "%option%"=="1" (
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
-    timeout /t 15
+    timeout /t %timeOutNum%
 	exit
 ) ELSE IF "%option%"=="9" (
 	exit
