@@ -107,6 +107,8 @@ IF "%option%"=="1" (
 ) ELSE IF "%option%"=="8" (
 	set /p "url=### Paste the URL from the original(forked) repo and press Enter:"
     call git remote add upstream %url%
+	timeout /t 10
+	call git remote -v
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
 	echo ### Great, everything went well! Press any key for exit.
