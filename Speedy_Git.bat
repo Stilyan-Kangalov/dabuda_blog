@@ -53,7 +53,7 @@ IF "%option%"=="1" (
 	echo ### Now press any key to trigger the Jekyll Rebuild process.
     timeout /t -1
 	echo ### ... ... ...
-	echo bundle exec jekyll build
+	call bundle exec jekyll build
 	echo.
 	echo ### Finished with all updates. Moving back to your current directory.
 	call cd _site
