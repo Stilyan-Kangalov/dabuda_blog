@@ -57,14 +57,15 @@ IF "%option%"=="1" (
 	echo.
 	echo ### Finished with all updates. Moving back to your current directory.
 	call cd _site
+	call git add .
+	call git commit -a -m "Automated commit by Speedy_Git on %currentTime%"
 	echo.
 	echo ### List of all updated files:
 	call git status
 	echo ### ... ... ...
 	echo. 
 	echo ### Now we will trigger auto commit in GitHub.
-	call git add .
-	call git commit -a -m "Automated commit by Speedy_Git on %currentTime%"
+	echo.
 	call git push origin master
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
