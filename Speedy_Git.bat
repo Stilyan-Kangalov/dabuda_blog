@@ -12,8 +12,6 @@ call git status
 echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 echo.
-set /p "msgline=### Type message for your new commit:"
-echo.
 echo ### Choose to Push or Get ###
 echo   Available commands are:
 echo    1. Push with automated commit.
@@ -40,6 +38,7 @@ IF "%option%"=="1" (
 	pause >nul
 ) ELSE IF "%option%"=="2" (
 	REM make new commit with your custom message
+	set /p "msgline=### Type message for your new commit:"
 	call git add .
 	call git commit -m "%msgline%"
 	call git push origin master
