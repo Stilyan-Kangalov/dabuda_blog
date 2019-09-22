@@ -1,4 +1,5 @@
 @ECHO OFF
+SETLOCAL EnableDelayedExpansion
 
 echo ##############################################################################
 echo                           ##### Speedy Git #####
@@ -44,7 +45,7 @@ IF "%option%"=="1" (
 	call cd _site
 	set /p "msgline=### Type message for your new commit:"
 	call git add .
-	call git commit -m "%msgline%"
+	call git commit -m "!msgline!"
 	call git push origin master
 	echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
@@ -103,10 +104,10 @@ IF "%option%"=="1" (
     timeout /t 30
 	exit
 ) ELSE IF "%option%"=="8" (
-    call cd _site
-	set /p "url=### Paste the URL from the original(forked) repo and press Enter:"
-    call git remote add upstream %url%
-	timeout /t 10
+	set /p "myUrl=### Paste the URL from the original(forked) repo and press Enter:"
+	timeout /t 5
+    call git remote add upstream !myUrl!
+	timeout /t 3
 	call git remote -v
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
