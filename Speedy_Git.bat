@@ -104,10 +104,11 @@ IF "%option%"=="1" (
     timeout /t 30
 	exit
 ) ELSE IF "%option%"=="8" (
+    call cd _site
 	set /p "myUrl=### Paste the URL from the original(forked) repo and press Enter:"
-	timeout /t 5
+	timeout /t 7
     call git remote add upstream !myUrl!
-	timeout /t 3
+	timeout /t 5
 	call git remote -v
     echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 	echo.
